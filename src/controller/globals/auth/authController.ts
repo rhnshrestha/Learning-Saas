@@ -21,6 +21,17 @@ import bcrypt from "bcrypt";
 
 // export {registerUser}
 
+
+
+/*
+login flow:
+email/username, password(basic)
+google login, fb, github(oauth)
+email login (SSO)
+*/
+
+
+
 // yesari class banayera pani grna milxa, yo jhan dami hunxa (advanced)
 class AuthController {
     static async registerUser(req:Request, res:Response){
@@ -48,6 +59,37 @@ class AuthController {
         res.status(201).json({
             message: "User registered successfully"
         })
+    }
+
+    static async loginUser(req: Request, res: Response){
+        const {email, password} = req.body;
+        if(!email || !password){
+            res.status(400).json({
+                message : "please provide email and password";
+            })
+            return
+        }
+
+    const data =  await  User.findAll({
+        where : {
+            email : email
+        }
+      })
+
+      if(data.length == 0){
+        res.status(400).json({
+            message: "not registered"
+        })
+      }else{
+        const isPasswordMatch = bcrypt.compareSync(password, data[0].password)
+        if(isPasswordMatch){
+            
+        }else{
+            res.status(403).json({
+                message: "invalid email or password"
+            })
+        }
+      }
     }
 }
     
