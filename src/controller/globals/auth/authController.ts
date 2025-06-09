@@ -8,6 +8,7 @@ Logout feature */
 import {Request, Response} from "express";
 import User from "../../../database/models/user.model";
 import bcrypt from "bcrypt"; 
+import jwt from "jsonwebtoken";
 // const registerUser = async (req:Request, res:Response)=> {
 //     const {username, email, password} = req.body
 //     if(!username || !password || !email){
@@ -83,7 +84,14 @@ class AuthController {
       }else{
         const isPasswordMatch = bcrypt.compareSync(password, data[0].password)
         if(isPasswordMatch){
+            const token = jwt.sign({id:  data[0].id}, "thisisrohan",{
+                expiresIn: "1min"
+            })
             
+
+            res.json({
+                token: token
+            })
         }else{
             res.status(403).json({
                 message: "invalid email or password"
