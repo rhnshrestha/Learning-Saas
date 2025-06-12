@@ -66,7 +66,7 @@ class AuthController {
         const {email, password} = req.body;
         if(!email || !password){
             res.status(400).json({
-                message : "please provide email and password";
+                message : "please provide email and password"
             })
             return
         }
@@ -84,13 +84,14 @@ class AuthController {
       }else{
         const isPasswordMatch = bcrypt.compareSync(password, data[0].password)
         if(isPasswordMatch){
-            const token = jwt.sign({id:  data[0].id}, "thisisrohan",{
+            const token = jwt.sign({id:  data[0].id}, "thisisrohan",{ //sign ma chai unique kura lukauney (for eg, id)
                 expiresIn: "1min"
             })
             
 
-            res.json({
-                token: token
+            res.status(200).json({
+                token: token,
+                message : "logged in successfully"
             })
         }else{
             res.status(403).json({
