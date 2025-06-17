@@ -84,7 +84,7 @@ class AuthController {
       }else{
         const isPasswordMatch = bcrypt.compareSync(password, data[0].password)
         if(isPasswordMatch){
-            const token = jwt.sign({id:  data[0].id}, "thisisrohan",{ //sign ma chai unique kura lukauney (for eg, id)
+            const token = jwt.sign({id:  data[0].id}, "thisissecret",{ //sign ma chai unique kura lukauney (for eg, id)
                 expiresIn: "1min"
             })
             
