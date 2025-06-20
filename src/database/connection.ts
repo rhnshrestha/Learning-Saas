@@ -20,7 +20,7 @@ sequelize.authenticate().then(()=>{
 })
 
 //migrate grnu prxa
-sequelize.sync({force:false})
+sequelize.sync({alter:false})
 .then(()=>{
     console.log('migrated successfully');
 })

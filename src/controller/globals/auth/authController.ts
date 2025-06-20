@@ -53,8 +53,8 @@ class AuthController {
     }
         await User.create({
             username : username,
-            email : email,
-            password : bcrypt.hashSync(password, 12)
+            password : bcrypt.hashSync(password, 12),
+            email : email
         })
 
         res.status(201).json({
@@ -78,17 +78,16 @@ class AuthController {
       })
 
       if(data.length == 0){
-        res.status(400).json({
+        res.status(404).json({
             message: "not registered"
         })
       }else{
         const isPasswordMatch = bcrypt.compareSync(password, data[0].password)
         if(isPasswordMatch){
             const token = jwt.sign({id:  data[0].id}, "thisissecret",{ //sign ma chai unique kura lukauney (for eg, id)
-                expiresIn: "1min"
+                expiresIn: "30day"
             })
             
-
             res.status(200).json({
                 token: token,
                 message : "logged in successfully"
@@ -101,8 +100,4 @@ class AuthController {
       }
     }
 }
-    
-    
-    
-
 export default AuthController 

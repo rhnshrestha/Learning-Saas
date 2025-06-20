@@ -1,4 +1,4 @@
-import { Table, Column, Model, DataType,  } from "sequelize-typescript";
+import { Table, Column, Model, DataType, PrimaryKey } from "sequelize-typescript";
 @Table({
     tableName : 'users',
     modelName : 'User',
@@ -33,5 +33,10 @@ class User extends Model{ //column haru banaunako lagi extend gareko
         defaultValue : 'student',
     })
     declare role : string
+
+    @Column({
+        type : DataType.STRING
+    })
+    declare currentInstituteNumber : string
 }
 export default User
