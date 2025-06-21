@@ -26,7 +26,10 @@ const isLoggedIn = async(req: IExtendedRequest, res: Response, next:NextFunction
             //     }
             // })
 
-            const userData = await User.findByPk(result.id)
+            const userData = await User.findByPk(result.id,{
+                attributes : ['id', 'currentInstituteNumber',]
+            })
+
             if(!userData){
                 res.status(403).json({
                     message : "No user with that id, invalid token"

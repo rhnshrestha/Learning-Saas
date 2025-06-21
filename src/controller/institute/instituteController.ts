@@ -81,7 +81,12 @@ const createTeacherTable = async (req:IExtendedRequest, res:Response, next:NextF
         id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
         teacherName VARCHAR(255) NOT NULL,
         teacherEmail VARCHAR(255) NOT NULL,
-        teacherPhoneNumber VARCHAR(255) NOT NULL UNIQUE
+        teacherPhoneNumber VARCHAR(255) NOT NULL UNIQUE,
+        teacherExpertise VARCHAR(100),
+        joinedDate DATE,
+        salary VARCHAR(100),
+        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         )`)
         next()
 }
@@ -92,7 +97,12 @@ const createStudentTable = async(req:IExtendedRequest, res:Response, next:NextFu
         student_${instituteNumber}(
         id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
         studentName VARCHAR(255) NOT NULL,
-        studentPhoneNo VARCHAR(255) NOT NULL UNIQUE 
+        studentPhoneNo VARCHAR(255) NOT NULL UNIQUE,
+        studentAddress TEXT,
+        enrolledDate DATE,
+        studentImage VARCHAR(255),
+        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         )`);
 
         next()
@@ -104,13 +114,20 @@ const createCourseTable = async(req:IExtendedRequest, res:Response, next:NextFun
         course_${instituteNumber}(
         id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
         courseName VARCHAR(255) NOT NULL UNIQUE,
-        coursePrice VARCHAR(255) NOT NULL  
+        coursePrice VARCHAR(255) NOT NULL ,
+        courseDuration VARCHAR(100) NOT NULL,
+        courseLevel ENUM('beginner', 'intermediate', 'advance') NOT NULL,
+        courseThumbnail VARCHAR(200),
+        courseDescription TEXT,
+        createAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         )`);
 
         res.status(200).json({
-            message : "Institute course created"
+            message : "Institute course created",
+            instituteNumber : instituteNumber
+        
         })
-
-        next()
 }
+
 export  {createInstitute,createTeacherTable, createStudentTable, createCourseTable }
