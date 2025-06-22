@@ -1,0 +1,16 @@
+day 43 (file handling, inserting thumbnail)
+
+frontend ra backend ma data communication "json" format bata huney ho
+tara json ma textual form ma matra janxa, kei file pathauna mildaina
+
+content-type in browser :
+browser ma 'application/json' => data textual form ma aako xa (file yesbata jadaina)
+browser ma 'multipart/form-data' => file haru exchange huda use hunxa
+
+kasaile file(pdf, mp3, png) pathauna khojyo vani 'multipart/form-data'  use hunxa
+tyo use grna 'multer' package install grnu pryo 
+multer le incoming file lai katai store grxa, ani backend ma pathaidinxa
+multer lai middleware ni bhanna sakinxa (bich ma bsxa frontend ra backend ko, store garera pathaidinxa)
+
+locally ni store grna milxa, cloud ma ni milxa 
+cloud ko lagi use cloudinary(free)

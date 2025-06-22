@@ -13,8 +13,4 @@ const asyncErrorHandler = (fn:Function) =>{
     }
 
 
-const sum = (a:string, b:number) =>{
-
-}
-
 export default asyncErrorHandler
