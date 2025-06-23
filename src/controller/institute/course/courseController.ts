@@ -1,4 +1,4 @@
-import { Response } from "express";
+import { NextFunction, Response } from "express";
 import IExtendedRequest from "../../../middleware/type";
 import sequelize from "../../../database/connection";
 
@@ -11,10 +11,11 @@ const createCourse = async(req:IExtendedRequest, res:Response) =>{
             message : "please enter name, price, description, duration, level of course"
         })
     }
-    const courseThumbnail = null ;
+    const courseThumbnail = req.file ? req.file.path : null ;
+    console.log(courseThumbnail, "courseThumbnail");
     const returnedData = await sequelize.query(`INSERT INTO course_${instituteNumber}(
         coursePrice, courseName, courseDescription, courseDuration, courseLevel, courseThumbnail) VALUES (?,?,?,?,?,?)`,{
-            replacements :[coursePrice, courseName, courseDescription, courseDuration, courseLevel, courseThumbnail || "rohan"]
+            replacements :[coursePrice, courseName, courseDescription, courseDuration, courseLevel, courseThumbnail]
         } )
         console.log(returnedData);
         res.status(200).json({
@@ -46,7 +47,7 @@ const deleteCourse = async(req:IExtendedRequest, res:Response) =>{
         })
 }
 
-const getCourses = async(req:IExtendedRequest, res:Response)=>{
+const  getCourses = async(req:IExtendedRequest, res:Response)=>{
     const instituteNumber = req.user?.currentInstituteNumber;
     const courses = await sequelize.query(`SELECT * FROM course_${instituteNumber}`)
     res.status(200).json({
@@ -66,5 +67,6 @@ const getSingleCourse = async(req:IExtendedRequest, res:Response)=>{
         data :  singleCourse
     })
 }
+
 
 export  {createCourse, deleteCourse, getCourses, getSingleCourse}

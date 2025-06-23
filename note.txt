@@ -14,3 +14,9 @@ multer lai middleware ni bhanna sakinxa (bich ma bsxa frontend ra backend ko, st
 
 locally ni store grna milxa, cloud ma ni milxa 
 cloud ko lagi use cloudinary(free)
+
+day 44 (file handling continue)
+
+locally kasari file handle hunxa ta --> folder banaunu pryo, jsma file bsxa, db ma chai file ko name or location bsxa
+installed cloudinary, multer-storage-cloudinary packages :
+--> npm i cloudinary, npm i multer-storage-cloudinary --force
