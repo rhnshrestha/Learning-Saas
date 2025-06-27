@@ -20,3 +20,9 @@ day 44 (file handling continue)
 locally kasari file handle hunxa ta --> folder banaunu pryo, jsma file bsxa, db ma chai file ko name or location bsxa
 installed cloudinary, multer-storage-cloudinary packages :
 --> npm i cloudinary, npm i multer-storage-cloudinary --force
+
+day 45(category controller)
+made create, get, delete category
+QueryTypes (array bhitra array aairathyo, teslai solve grna sequelize pg install garera use gareko)
+join ko barema herem, course table ma category join gryo
+
