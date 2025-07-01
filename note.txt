@@ -26,3 +26,13 @@ made create, get, delete category
 QueryTypes (array bhitra array aairathyo, teslai solve grna sequelize pg install garera use gareko)
 join ko barema herem, course table ma category join gryo
 
+day 46 (teacher controller)
+createTeacher banayo
+randomPassword generate gryo (for teacher password) because teacher password sidai body bata didaina
+tei anusar routing milayo
+
+day 47 (login vayesi mail pathauney)
+tesko lagi euta package xa npm ma --> nodemailer
+tyo DT ma vayera types pani install gryo --> npm i @types/nodemailer
+sendMail vanney kura banayo, jas bata aru lai mail janxa (understood about app password)
+successfully integreted nodemailer
