@@ -40,7 +40,7 @@ const createTeacher = async (req:IExtendedRequest, res:Response)=>{
     const mailInformation = {
         to : teacherEmail,
         subject : "Welcome to the first in NEPAL SaaS FullStack Course",
-        text : `We are excited to welcome you sir/madam, email: ${teacherEmail} password: ${data.plainVersion}`
+        text : `We are excited to welcome you sir/madam, email: ${teacherEmail} password: ${data.plainVersion}, your institute number : ${instituteNumber}`
     }
     await sendMail(mailInformation)
 

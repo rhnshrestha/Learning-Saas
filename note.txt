@@ -36,3 +36,7 @@ tesko lagi euta package xa npm ma --> nodemailer
 tyo DT ma vayera types pani install gryo --> npm i @types/nodemailer
 sendMail vanney kura banayo, jas bata aru lai mail janxa (understood about app password)
 successfully integreted nodemailer
+
+day 48
+teacher login huda token generate hunxa jsma teacher ko id ra current insittue number pass hunxa, from which its easier to perform queries
+so made teacher Controller, teacher Route, separate function to generate jwt token
